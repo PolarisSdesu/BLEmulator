@@ -107,7 +107,7 @@ fun BootloaderStatus(isUnlocked: Boolean) {
         Image(
             painter = painterResource(imageRes),
             contentDescription = null,
-            colorFilter = if (isDark) null else ColorFilter.tint(Color(0xFF000000)),
+            colorFilter = if (isDark) null else ColorFilter.tint(Color(0x99000000)),
             modifier = Modifier.scale(1.1f)
         )
         Spacer(modifier = Modifier.height(22.dp))
@@ -140,7 +140,6 @@ fun BootLoaderContent(onUnlock: () -> Unit) {
                 Text(
                     text = "为什么需要锁定当前设备？",
                     color = Color(0xFF8B8B8B),
-                    fontWeight = FontWeight.SemiBold
                 )
                 Divider()
                 Text(
@@ -153,7 +152,6 @@ fun BootLoaderContent(onUnlock: () -> Unit) {
                 Text(
                     text = "如果您已经了解风险，但依然需要解锁，怎么办？",
                     color = Color(0xFF8B8B8B),
-                    fontWeight = FontWeight.SemiBold
                 )
                 Divider()
                 Text(
