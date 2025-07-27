@@ -126,27 +126,62 @@ fun BootLoaderContent(onUnlock: () -> Unit) {
     CompositionLocalProvider(
         LocalTextStyle provides TextStyle(fontSize = 19.sp, fontWeight = FontWeight.Medium)
     ) {
-        Column(
+        Box(
             modifier = Modifier
                 .fillMaxSize()
-                .verticalScroll(scrollState)
-                .padding(20.dp)
+                .padding(horizontal = 20.dp, vertical = 16.dp)
         ) {
-            Text("为什么需要锁定当前设备？", color = Color(0xFF8B8B8B))
-            Divider()
-            Text("锁定设备可以保证手机安全，避免系统被篡改或个人数据泄露。如果您需要Fastboot刷机，请先解锁。\n注意：设备解锁后，“查找手机”功能将无法使用。")
-            Spacer(modifier = Modifier.height(20.dp))
-            Text("如果您已经了解风险，但依然需要解锁，怎么办？", color = Color(0xFF8B8B8B))
-            Divider()
-            Text(
-                "1.确定手机中已经插入SIM卡。\n" +
-                        "2.关闭手机WLAN并打开手机数据连接，确保手机可使用数据联网。\n" +
-                        "3.点击底部“绑定账号和设备”按钮，将您的小米账号和当前设备绑定。\n" +
-                        "4.绑定成功后，请访问系统官网获取解锁工具（解锁需要在电脑上进行操作）。解锁工具下载地址："
-            )
-            Text("https://unlock.update.miui.com", color = Color(0xFF0C90FF))
-            Spacer(modifier = Modifier.height(4.dp))
-            BindButton("绑定账号和设备", onUnlock = onUnlock)
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .verticalScroll(scrollState)
+                    .padding(bottom = 80.dp)
+            ) {
+                Text(
+                    text = "为什么需要锁定当前设备？",
+                    color = Color(0xFF8B8B8B),
+                    fontWeight = FontWeight.SemiBold
+                )
+                Divider()
+                Text(
+                    text = "锁定设备可以保证手机安全，避免系统被篡改或个人数据泄露。如果您需要 Fastboot 刷机，请先解锁。\n注意：设备解锁后，“查找手机”功能将无法使用。",
+                    lineHeight = 24.sp
+                )
+
+                Spacer(modifier = Modifier.height(20.dp))
+
+                Text(
+                    text = "如果您已经了解风险，但依然需要解锁，怎么办？",
+                    color = Color(0xFF8B8B8B),
+                    fontWeight = FontWeight.SemiBold
+                )
+                Divider()
+                Text(
+                    text = """
+            1. 确保手机中已经插入 SIM 卡。
+            2. 关闭手机 WLAN 并打开数据连接，确保网络可用。
+            3. 点击底部“绑定账号和设备”按钮，将您的小米账号与当前设备绑定。
+            4. 绑定成功后，请访问以下网址，下载解锁工具（解锁需在电脑上进行）：
+        """.trimIndent(),
+                    lineHeight = 24.sp
+                )
+
+                Spacer(modifier = Modifier.height(8.dp))
+
+                Text(
+                    text = "https://unlock.update.miui.com",
+                    color = Color(0xFF0C90FF)
+                )
+            }
+
+            Box(
+                modifier = Modifier
+                    .align(Alignment.BottomCenter)
+                    .fillMaxWidth()
+                    .padding(bottom = 12.dp)
+            ) {
+                BindButton("绑定账号和设备", onUnlock = onUnlock)
+            }
         }
     }
 }
